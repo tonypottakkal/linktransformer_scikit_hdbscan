@@ -1,7 +1,7 @@
 from itertools import combinations
-from sklearn.cluster import AgglomerativeClustering, DBSCAN
+from sklearn.cluster import AgglomerativeClustering, DBSCAN, HDBSCAN
 import networkx as nx
-import hdbscan
+
 
 
 def cluster(cluster_type, cluster_params, corpus_embeddings, corpus_ids=None):
@@ -65,7 +65,7 @@ def cluster(cluster_type, cluster_params, corpus_embeddings, corpus_ids=None):
         )
 
     if cluster_type == "HDBScan":
-        clustering_model = hdbscan.HDBSCAN(
+        clustering_model = HDBSCAN(
             min_cluster_size=cluster_params["min cluster size"],
             min_samples=cluster_params["min samples"],
             gen_min_span_tree=True
